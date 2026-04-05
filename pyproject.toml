@@ -1,0 +1,26 @@
+[project]
+name = "tiny-math"
+version = "0.1.0"
+description = ""
+readme = "README.md"
+requires-python = ">=3.9"
+dependencies = []
+
+[dependency-groups]
+dev = [
+    "pybind11>=3.0.2",
+    "pybind11-stubgen>=2.5.5",
+]
+
+[build-system]
+requires = ["scikit-build-core>=0.12", "pybind11>=3.0"]
+build-backend = "scikit_build_core.build"
+
+[tool.scikit-build]
+minimum-version = "build-system.requires"
+
+[tool.scikit-build.cmake]
+build-type = "Debug"
+
+[tool.scikit-build.cmake.define]
+CMAKE_VERBOSE_MAKEFILE = "ON"
