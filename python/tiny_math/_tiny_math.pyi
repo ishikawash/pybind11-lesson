@@ -25,6 +25,9 @@ class ComplexNumber:
     def im(self) -> float:
         ...
     @property
+    def norm(self) -> float:
+        ...
+    @property
     def re(self) -> float:
         ...
 def exponent(z: ComplexNumber) -> ComplexNumber:

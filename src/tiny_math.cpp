@@ -1,30 +1,29 @@
-#include <format>
-#include "tiny_math.h"
+#include <pybind11/pybind11.h>
+#include "complex_number.h"
 
-ComplexNumber ComplexNumber::add(const ComplexNumber& other) const
-{
-    return ComplexNumber(
-        _re + other._re,
-        _im + other._im
-    );
-}
+#define STRINGIFY(x) #x
+#define MACRO_STRINGIFY(x) STRINGIFY(x)
 
-ComplexNumber ComplexNumber::multiply(const ComplexNumber& other) const
-{
-    return ComplexNumber(
-        _re*other._re - _im*other._im,
-        _re*other._im + _im*other._re
-    );
-}
+namespace py = pybind11;
 
-std::string ComplexNumber::to_string() const
-{
-    return std::format("({}, {})", _re, _im);
-}
+PYBIND11_MODULE(_tiny_math, m, py::mod_gil_not_used(), py::multiple_interpreters::per_interpreter_gil()) {
+    py::class_<ComplexNumber>(m, "ComplexNumber")
+        .def(py::init<float, float>(), py::arg("re"), py::arg("im"))
+        .def_property_readonly("re", &ComplexNumber::re)
+        .def_property_readonly("im", &ComplexNumber::im)
+        .def_property_readonly("norm", &ComplexNumber::norm)
+        .def("__add__", py::overload_cast<const ComplexNumber&>(&ComplexNumber::add, py::const_), py::arg("other"))
+        .def("__add__", py::overload_cast<float>(&ComplexNumber::add, py::const_), py::arg("number"))
+        .def("__mul__", py::overload_cast<const ComplexNumber&>(&ComplexNumber::multiply, py::const_), py::arg("other"))
+        .def("__mul__", py::overload_cast<float>(&ComplexNumber::multiply, py::const_), py::arg("number"))
+        .def("__eq__", &ComplexNumber::equals, py::arg("other"))
+        .def("__repr__", &ComplexNumber::to_string);
 
-ComplexNumber exponent(const ComplexNumber& z)
-{
-    float a = exp(z.re());
-    ComplexNumber _z = ComplexNumber(cos(z.im()), sin(z.im()));
-    return _z * a;
+    m.def("exponent", &exponent, py::arg("z"));
+
+#ifdef VERSION_INFO
+    m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
+#else
+    m.attr("__version__") = "dev";
+#endif
 }

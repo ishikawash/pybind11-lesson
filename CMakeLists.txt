@@ -10,7 +10,11 @@ set(CMAKE_CXX_STANDARD 20)
 find_package(Python COMPONENTS Interpreter Development REQUIRED)
 find_package(pybind11 CONFIG REQUIRED)
 
-python_add_library(_tiny_math MODULE src/tiny_math.cpp WITH_SOABI)
+python_add_library(
+  _tiny_math
+  MODULE src/tiny_math.cpp src/complex_number.cpp
+  WITH_SOABI
+)
 target_link_libraries(_tiny_math PRIVATE pybind11::headers)
 
 target_compile_definitions(_tiny_math PRIVATE VERSION_INFO=${PROJECT_VERSION})
