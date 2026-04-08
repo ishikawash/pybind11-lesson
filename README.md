@@ -3,7 +3,11 @@ pybind11-lesson
 
 This is small project to learn how to use [pybind11](https://pybind11.readthedocs.io/en/stable/) and development workflow using [uv](https://docs.astral.sh/uv/).
 
+I tested this project on Rocky Linux 9.
+
 ```shell
+scl enable gcc-toolset-15 -- bash
+
 uv sync
 
 uv run pybind11-stubgen -o python tiny_math
