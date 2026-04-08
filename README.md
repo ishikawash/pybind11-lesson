@@ -15,13 +15,13 @@ uv run pytest python/tests
 ## Debugging program using Visual Studio Code.
 1. Set breakpoints in Python script and C++ code.
 2. Run "Python: Current File" or "Python Debugger: pytest".
-3. When Python debugger hit the breakpoint, switch debugger from Python to C++ and run "(gdb) Attach".
-4. C++ debugger ask you pid to attach so that select pid of process of "debugpy" server.
+3. When Python debugger hit the breakpoint, run "(gdb) Attach" to switch debugger from Python to C++.
+4. C++ debugger ask you pid to attach so that select pid of "debugpy" server process.
 5. Resume Python debugger and C++ debugger will hit the breakpoint.
 
 ref: [Debugging PySide with VSCode (Linux + Windows)](https://doc.qt.io/qtforpython-6/tutorials/debugging/vscode/vscode.html)
 
-If C++ debugger doen't hit the breakpoint, make sure C++ program includes debug symbols.
+If C++ debugger doesn't hit the breakpoint, make sure C++ program includes debug symbols.
 When building Python package, scikit-build-core strip debug symbols from C++ program by default.
 
 ```
