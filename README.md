@@ -6,13 +6,14 @@ This is small project to learn how to use [pybind11](https://pybind11.readthedoc
 I tested this project on Rocky Linux 9.
 
 ```shell
+sudo dnf install python3-devel
+sudo dnf install gcc-toolset-15
+
 scl enable gcc-toolset-15 -- bash
 
 uv sync
-
 uv run pybind11-stubgen -o python tiny_math
 uv pip install -e .
-
 uv run pytest python/tests
 ```
 
