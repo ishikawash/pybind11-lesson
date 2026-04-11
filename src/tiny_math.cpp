@@ -20,6 +20,7 @@ PYBIND11_MODULE(_tiny_math, m, py::mod_gil_not_used(), py::multiple_interpreters
         .def("__repr__", &ComplexNumber::to_string);
 
     m.def("exponent", &exponent, py::arg("z"));
+    m.def("approximated_exponent", &approximated_exponent, py::arg("z"), py::arg("iteration") = 5);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);

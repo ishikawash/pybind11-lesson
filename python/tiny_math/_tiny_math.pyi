@@ -1,6 +1,6 @@
 from __future__ import annotations
 import typing
-__all__: list[str] = ['ComplexNumber', 'exponent']
+__all__: list[str] = ['ComplexNumber', 'approximated_exponent', 'exponent']
 class ComplexNumber:
     __hash__: typing.ClassVar[None] = None
     @typing.overload
@@ -30,6 +30,8 @@ class ComplexNumber:
     @property
     def re(self) -> float:
         ...
+def approximated_exponent(z: ComplexNumber, iteration: typing.SupportsInt | typing.SupportsIndex = 5) -> ComplexNumber:
+    ...
 def exponent(z: ComplexNumber) -> ComplexNumber:
     ...
 __version__: str = '0.1.0'

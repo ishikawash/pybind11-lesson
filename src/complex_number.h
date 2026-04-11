@@ -27,3 +27,4 @@ public:
 };
 
 ComplexNumber exponent(const ComplexNumber& z);
+ComplexNumber approximated_exponent(const ComplexNumber& z, int iteration = 5);
