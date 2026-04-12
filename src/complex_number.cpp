@@ -55,6 +55,7 @@ ComplexNumber exponent(const ComplexNumber& z)
 
 ComplexNumber approximated_exponent(const ComplexNumber& z, int iteration)
 {
+    // Try to approximate exponential function using Maclaurin series.
     auto dcos = [](int n)
     {
         float y[] = { 1., 0., -1., 0. };
