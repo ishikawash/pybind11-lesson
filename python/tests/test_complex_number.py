@@ -1,5 +1,9 @@
 import math
-from tiny_math import ComplexNumber, exponent
+from tiny_math import (
+    ComplexNumber,
+    exponent,
+    approximated_exponent
+)
 
 def test_add():
     z1 = ComplexNumber(1., 0.)
@@ -16,4 +20,8 @@ def test_exponent():
     z1 = ComplexNumber(0., math.pi)
     z2 = exponent(z1) + 1.
     assert math.isclose(0., z2.norm, abs_tol=1e-6)
-    
+
+def test_approximated_exponent():
+    z1 = ComplexNumber(0., math.pi)
+    z2 = approximated_exponent(z1, 20) + 1.
+    assert math.isclose(0., z2.norm, abs_tol=1e-6)
