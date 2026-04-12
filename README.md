@@ -12,9 +12,10 @@ sudo dnf install gcc-toolset-15
 scl enable gcc-toolset-15 -- bash
 
 uv sync
-uv run pybind11-stubgen -o python tiny_math
 uv pip install -e .
+uv run pybind11-stubgen -o python tiny_math
 uv run pytest python/tests
+uv build
 ```
 
 ## Debugging program using Visual Studio Code.
