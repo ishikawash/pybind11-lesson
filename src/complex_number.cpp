@@ -20,6 +20,8 @@ namespace
     }
 }
 
+using namespace tiny_math;
+
 float ComplexNumber::norm() const
 {
     float x = _re*_re + _im*_im;
