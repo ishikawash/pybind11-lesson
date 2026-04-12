@@ -19,8 +19,8 @@ PYBIND11_MODULE(_tiny_math, m, py::mod_gil_not_used(), py::multiple_interpreters
         .def("__eq__", &tiny_math::ComplexNumber::equals, py::arg("other"))
         .def("__repr__", &tiny_math::ComplexNumber::to_string);
 
-    m.def("exponent", &tiny_math::exp, py::arg("z"));
-    m.def("approximated_exponent", &tiny_math::approximated_exp, py::arg("z"), py::arg("iteration") = 5);
+    m.def("exp", &tiny_math::exp, py::arg("z"));
+    m.def("approximated_exp", &tiny_math::approximated_exp, py::arg("z"), py::arg("iteration") = 5);
 
 #ifdef VERSION_INFO
     m.attr("__version__") = MACRO_STRINGIFY(VERSION_INFO);
