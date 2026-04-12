@@ -30,7 +30,7 @@ namespace tiny_math
         bool operator==(const ComplexNumber &other) const { return equals(other); }
     };
 
-    ComplexNumber exponent(const ComplexNumber &z);
-    ComplexNumber approximated_exponent(const ComplexNumber &z, int iteration = 5);
+    ComplexNumber exp(const ComplexNumber &z);
+    ComplexNumber approximated_exp(const ComplexNumber &z, int iteration = 5);
 
 }

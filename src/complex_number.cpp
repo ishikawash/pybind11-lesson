@@ -49,13 +49,13 @@ std::string ComplexNumber::to_string() const
     return std::format("({}, {})", _re, _im);
 }
 
-ComplexNumber exponent(const ComplexNumber& z)
+ComplexNumber exp(const ComplexNumber& z)
 {
     ComplexNumber _z = ComplexNumber(cos(z.im()), sin(z.im()));
     return _z * exp(z.re());
 }
 
-ComplexNumber approximated_exponent(const ComplexNumber& z, int iteration)
+ComplexNumber approximated_exp(const ComplexNumber& z, int iteration)
 {
     // Try to approximate exponential function using Maclaurin series.
     auto dcos = [](int n)
